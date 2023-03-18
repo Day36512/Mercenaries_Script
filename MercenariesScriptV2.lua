@@ -40,7 +40,9 @@ local function OnGossipHello(event, player, creature)
 end
 
 local function OnGossipSelect(event, player, creature, sender, intid, code)
-    if intid >= 1001 and intid <= 1003 then
+    if intid == 0 then
+        OnGossipHello(event, player, creature)
+    elseif intid >= 1001 and intid <= 1003 then
         local index = intid - 1000
         local selectedMainHand = mainHandItems[index]
         creature:SetEquipmentSlots(selectedMainHand, 0, 0)
@@ -54,38 +56,38 @@ local function OnGossipSelect(event, player, creature, sender, intid, code)
         local destination = destinations[index]
         local finalX = destination.x + math.random(-10, 10)
         local finalY = destination.y + math.random(-10, 10)
-local finalZ = destination.z
-local finalO = destination.o
-creature:MoveTo(0, finalX, finalY, finalZ, true)
-    local battlecryIndex = math.random(1, #messages)
-    creature:SendUnitYell(messages[battlecryIndex], 0)
-    creature:EmoteState(375)
-    creature:SetHomePosition(finalX, finalY, finalZ, finalO)
-    creature:SetNPCFlags(0)
-    player:RemoveItem(ITEM_ID, 1)
-    player:KilledMonsterCredit(creature:GetEntry())
-    player:GossipComplete()
-end
+        local finalZ = destination.z
+        local finalO = destination.o
+        creature:MoveTo(0, finalX, finalY, finalZ, true)
+        local battlecryIndex = math.random(1, #messages)
+        creature:SendUnitYell(messages[battlecryIndex], 0)
+        creature:EmoteState(375)
+        creature:SetHomePosition(finalX, finalY, finalZ, finalO)
+        creature:SetNPCFlags(0)
+        player:RemoveItem(ITEM_ID, 1)
+        player:KilledMonsterCredit(creature:GetEntry())
+        player:GossipComplete()
+    end
 
-if intid == 2005 then
-    local randomAngle = math.random() * 2 * math.pi
-    creature:MoveFollow(player, 5, randomAngle) -- Follow the player with a distance of 5 yards and random angle
-    local battlecryIndex = math.random(1, #messages)
-    creature:SendUnitYell(messages[battlecryIndex], 0)
+    if intid == 2005 then
+        local randomAngle = math.random() * 2 * math.pi
+        creature:MoveFollow(player, 5, randomAngle) -- Follow the player with a distance of 5 yards and random angle
+        local battlecryIndex = math.random(1, #messages)
+        creature:SendUnitYell(messages[battlecryIndex], 0)
 
-    creature:SetNPCFlags(0)
-    player:RemoveItem(ITEM_ID, 1)
-    player:GossipComplete()
-end
+        creature:SetNPCFlags(0)
+        player:RemoveItem(ITEM_ID, 1)
+        player:GossipComplete()
+    end
 end
 
 local function OnCreatureDied(event, creature, killer)
-creature:SetEquipmentSlots(0, 0, 0)
-creature:RemoveEvents()
+    creature:SetEquipmentSlots(0, 0, 0)
+    creature:RemoveEvents()
 end
 
 for _, npcId in ipairs(NPC_IDS) do
-RegisterCreatureGossipEvent(npcId, 1, OnGossipHello)
-RegisterCreatureGossipEvent(npcId, 2, OnGossipSelect)
-RegisterCreatureEvent(npcId, 4, OnCreatureDied)
+    RegisterCreatureGossipEvent(npcId, 1, OnGossipHello)
+    RegisterCreatureGossipEvent(npcId, 2, OnGossipSelect)
+    RegisterCreatureEvent(npcId, 4, OnCreatureDied)
 end
