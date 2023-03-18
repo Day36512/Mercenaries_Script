@@ -10,4 +10,4 @@ You could currently use this script if you modified x y z coordinates and npcids
 2. Npcs now have a "Follow me" option.
 3. Icons and text have been made pretty.
 
-This is still very much for a custom quest but is much more workable now.
+This is still very much for a custom quest but is much more workable now for other uses.
