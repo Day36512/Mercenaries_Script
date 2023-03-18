@@ -19,18 +19,18 @@ local messages = {
 local function OnGossipHello(event, player, creature)
     if player:HasItem(ITEM_ID) then
         player:GossipClearMenu()
-        player:GossipMenuAddItem(0, "Give Weapon", 1, 0)
-        player:GossipMenuAddItem(0, "2-Handed Axe", 1, 1001)
-        player:GossipMenuAddItem(0, "2-Handed Mace", 1, 1002)
-        player:GossipMenuAddItem(0, "2-Handed Sword", 1, 1003)
+        player:GossipMenuAddItem(8, "|TInterface\\icons\\inv_sword_39:40:40:-35|t|cff610B0BGive Weapon|r", 1, 0)
+        player:GossipMenuAddItem(9, "2-Handed Axe", 1, 1001)
+        player:GossipMenuAddItem(9, "2-Handed Mace", 1, 1002)
+        player:GossipMenuAddItem(9, "2-Handed Sword", 1, 1003)
 
         if creature:GetData("equipmentSet") then
-            player:GossipMenuAddItem(0, "Send to Location", 2, 0)
+            player:GossipMenuAddItem(8, "|TInterface\\icons\\ability_warrior_battleshout:40:40:-35|t|cffC41F3BSend to Location|r", 2, 0)
             player:GossipMenuAddItem(0, "Reinforce the East Entrance", 2, 2001)
             player:GossipMenuAddItem(0, "Reinforce the North Entrance", 2, 2002)
             player:GossipMenuAddItem(0, "Reinforce the South Entrance", 2, 2003)
             player:GossipMenuAddItem(0, "Reinforce the West Entrance", 2, 2004)
-            player:GossipMenuAddItem(0, "Follow me into battle!", 2, 2005) -- Add the new option
+            player:GossipMenuAddItem(2, "|t|cff0101DFFollow me into battle!|r", 2, 2005) -- Add the new option
         end
 
         player:GossipSendMenu(1, creature)
