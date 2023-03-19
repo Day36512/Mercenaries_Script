@@ -136,7 +136,7 @@ local function OnGossipSelect(event, player, creature, sender, intid, code)
         creature:MoveTo(0, finalX, finalY, finalZ, true)
         local battlecryIndex = math.random(1, #messages)
         creature:SendUnitYell(messages[battlecryIndex], 0)
-        -- creature:EmoteState(375)
+        creature:EmoteState(375)
         creature:SetHomePosition(finalX, finalY, finalZ, finalO)
         creature:SetNPCFlags(0)
         player:RemoveItem(ITEM_ID, 1)
@@ -158,7 +158,7 @@ end
 
 local function OnCreatureDied(event, creature, killer)
     creature:SetEquipmentSlots(0, 0, 0)
-	creature:SetData("equipmentSet", false)
+    creature:SetData("equipmentSet", false)
     creature:RemoveEvents()
 end
 
