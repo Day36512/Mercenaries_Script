@@ -83,6 +83,7 @@ end
 
 local function OnCreatureDied(event, creature, killer)
     creature:SetEquipmentSlots(0, 0, 0)
+    creature:SetData("equipmentSet", false)
     creature:RemoveEvents()
 end
 
