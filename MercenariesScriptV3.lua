@@ -108,7 +108,7 @@ end
 
 local function OnLeaveCombat(event, creature)
 	creature:RemoveEvents()
-	creature:EmoteState(375)
+	-- creature:EmoteState(375)
     creature:SetData("abilitiesRegistered", false)
 end
 
