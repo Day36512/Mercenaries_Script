@@ -5,9 +5,12 @@ This script will be adapted as a sort of city attacker script where players can 
 
 You could currently use this script if you modified x y z coordinates and npcids.
 
-# UPDATE: V2 is Now Available #
+UPDATE: V2 
 1. Players can now choose the npc's weapon and target destination.
 2. Npcs now have a "Follow me" option.
 3. Icons and text have been made pretty.
 
 This is still very much for a custom quest but is much more workable now for other uses.
+
+# Update: V3 #
+Can set npcs to have unique abilities based on the weapon chosen.
